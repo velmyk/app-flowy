@@ -1,1 +1,15 @@
 <div>Create</div>
+<div layout-gt-sm="row">
+	<form name="userForm"
+		ng-submit="plantsCreateCtrl.createPlant()">
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Name</label>
+			<input ng-model="plantsCreateCtrl.name">
+		</md-input-container>
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Interval</label>
+			<input ng-model="plantsCreateCtrl.iterval">
+		</md-input-container>
+		<md-button type="submit" class="md-raised md-primary">Create</md-button>
+	</form>
+</div>
