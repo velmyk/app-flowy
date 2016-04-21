@@ -1,1 +1,1 @@
-# Mentoring program 2016. Home work 11. Cordova app
+# Flowy app
