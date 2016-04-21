@@ -15,7 +15,7 @@ describe('app::plants PlantsService', () => {
 		sut = new PlantsService(localStorageService);
 	});
 
-	describe('createPlant', () => {
+	describe('create plant', () => {
 		beforeEach(() => {
 			plant = {};
 			sut.createPlant(plant);
@@ -27,6 +27,19 @@ describe('app::plants PlantsService', () => {
 
 		it('should store plant', () => {
 			expect(localStorageService.set).toHaveBeenCalledWith('plants', jasmine.any(Array));
+		});
+	});
+
+	describe('get all plants', () => {
+		let plants;
+
+		beforeEach(() => {
+			plants = {};
+			localStorageService.get.and.returnValue(plants);
+		});
+
+		it('should load all plants', () => {
+			expect(sut.getAllPlants()).toEqual(plants);
 		});
 	});
 

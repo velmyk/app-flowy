@@ -1,14 +1,18 @@
 export default class PlantsService {
-	constructor(localStoragrService) {
+	constructor(localStorageService) {
 		'ngInject';
 
-		this.localStoragrService = localStoragrService;
+		this.localStorageService = localStorageService;
 	}
 
 	createPlant(newPlant) {
-		let plantsList = this.localStoragrService.get('plants');
+		let plantsList = this.localStorageService.get('plants');
 		plantsList = plantsList ? plantsList : [];
 		plantsList.push(newPlant);
-		this.localStoragrService.set('plants', plantsList);
+		this.localStorageService.set('plants', plantsList);
+	}
+
+	getAllPlants() {
+		return this.localStorageService.get('plants');
 	}
 }

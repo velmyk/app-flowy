@@ -14,11 +14,12 @@ describe('app::plants PlantsCreateController', () => {
 
 	describe('create plant', () => {
 		beforeEach(() => {
+			sut.input = {};
 			sut.createPlant();
 		});
 
 		it('should create plant', () => {
-			expect(PlantsService.createPlant).toHaveBeenCalled();
+			expect(PlantsService.createPlant).toHaveBeenCalledWith(sut.input);
 		});
 	});
 });
