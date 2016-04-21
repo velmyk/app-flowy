@@ -16,7 +16,7 @@
     "build:js": "webpack -p --optimize-compress-warnings=false",
     "build:css": "node-sass --output-style compressed ./src/scss/core.scss ./cordova/www/app.css",
     "watch:css": "onchange 'src/**/*.scss' -- npm run build:css",
-    "watch:js": "webpack-dev-server",
+    "watch:js": "webpack-dev-server --inline --hot",
     "start": "npm run build && npm-run-all --parallel watch:css watch:js",
     "build": "npm-run-all clean build:js uglify static build:css autoprefixer",
     "device": "npm run build && cd cordova && cordova prepare && cordova run ios --device"

@@ -7,7 +7,9 @@ const   NODE_ENV = process.env.NODE_ENV || 'development';
 module.exports = {
     entry: './src/app/app.js',
     output: {
-        filename: './cordova/www/app.js'
+        path: './cordova/www',
+        publicPath: "/",
+        filename: 'app.js'
     },
     watchOptions: {
         aggregateTimeout: 100
@@ -47,5 +49,15 @@ module.exports = {
                 loader: 'raw'
             }
         ]
+    },
+    devServer: {
+        historyApiFallback: true,
+        hot: true,
+        // progress: true,
+        contentBase: './cordova/www/',
+        // stats: 'errors-only',
+        // quiet: false,
+        host: 'localhost',
+        port: 9005
     }
 };
