@@ -6,4 +6,8 @@ export default class mainController {
 	mult(a, b) {
 		return a * b;
 	}
+
+	a() {
+		
+	}
 }
