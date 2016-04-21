@@ -36,9 +36,7 @@
     "angular-material": "1.0.6",
     "angular-messages": "1.5.5",
     "angular-mocks": "1.5.0",
-    "angular-ui-router": "0.2.18"
-  },
-  "devDependencies": {
+    "angular-ui-router": "0.2.18",
     "autoprefixer": "6.3.4",
     "babel-core": "6.7.2",
     "babel-loader": "6.2.2",
