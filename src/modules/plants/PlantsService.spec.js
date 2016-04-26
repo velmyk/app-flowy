@@ -1,25 +1,33 @@
 import PlantsService from './PlantsService';
+import TIME_CONSTANTS from './TIME_CONSTANTS';
 
 describe('app::plants PlantsService', () => {
 	let sut,
-		localStorageService;
+		localStorageService,
+		$cordovaLocalNotification;
 
 	let	plant,
 		plants;
 
 	beforeEach(() => {
+		$cordovaLocalNotification = {
+			schedule: jasmine.createSpy('schedule')
+		};
+
 		localStorageService = {
 			set: jasmine.createSpy('set'),
 			get: jasmine.createSpy('get')
 		};
 
-		sut = new PlantsService(localStorageService);
+		sut = new PlantsService(localStorageService,
+								$cordovaLocalNotification);
 	});
 
 	describe('create plant', () => {
 		beforeEach(() => {
 			plant = {};
 			spyOn(sut, 'assignId');
+			spyOn(sut, 'assignNotification');
 			sut.createPlant(plant);
 		});
 
@@ -29,6 +37,10 @@ describe('app::plants PlantsService', () => {
 
 		it('should get current list of existing plants', () => {
 			expect(localStorageService.get).toHaveBeenCalledWith('plants');
+		});
+
+		it('should assign notification', () => {
+			expect(sut.assignNotification).toHaveBeenCalled();
 		});
 
 		it('should store plant', () => {
@@ -72,6 +84,34 @@ describe('app::plants PlantsService', () => {
 
 		it('should find plant in local storage', () => {
 			expect(sut.getPlantById(plant.id)).toEqual(plant);
+		});
+	});
+
+	describe('assign notification', () => {
+		beforeEach(() => {
+			plant = {
+				id: Math.random(),
+				name: RandomString(),
+				interval: Math.random()
+			};
+			spyOn(sut, 'calculateNotificationTime').and.returnValue(Math.random());
+			sut.assignNotification(plant);
+		});
+
+		it('should assign timeout for notification', () => {
+			expect($cordovaLocalNotification.schedule)
+				.toHaveBeenCalledWith(jasmine.objectContaining({
+					id: plant.id,
+					title: plant.name,
+					text: 'Need a water!',
+					at: jasmine.any(Number)
+				}));
+		});
+	});
+
+	describe('calculate notification time', () => {
+		it('should return timestamp in the future to water plant at', () => {
+			expect(sut.calculateNotificationTime(Math.random())).toBeGreaterThan(new Date().getTime());
 		});
 	});
 
