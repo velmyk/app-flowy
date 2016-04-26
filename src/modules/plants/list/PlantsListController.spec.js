@@ -25,4 +25,14 @@ describe('app::plants PlantsListController', () => {
 			expect($state.go).toHaveBeenCalledWith('^.modify', { plantId: plantId } );
 		});
 	});
+
+	describe('add new plant', () => {
+		beforeEach(() => {
+			sut.addNewPlant();
+		});
+
+		it('should go to add plant page', () => {
+			expect($state.go).toHaveBeenCalledWith('^.create');
+		});
+	});
 });

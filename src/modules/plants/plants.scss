@@ -1,0 +1,13 @@
+.plants {
+	&-add {
+		position: fixed;
+    	right: 30px;
+    	bottom: 30px;
+
+    	&__plus {
+    		font-size: 43px;
+    		vertical-align: top;
+    		margin-top: -4px;
+    	}
+	}
+}

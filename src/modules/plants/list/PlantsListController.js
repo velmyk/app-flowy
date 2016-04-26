@@ -10,4 +10,8 @@ export default class PlantsListController {
 	modifyPlant(plantId) {
 		this.$state.go('^.modify', { plantId: plantId} );
 	}
+
+	addNewPlant() {
+		this.$state.go('^.create');
+	}
 }
