@@ -4,7 +4,8 @@ describe('app::plants PlantsService', () => {
 	let sut,
 		localStorageService;
 
-	let	plant;
+	let	plant,
+		plants;
 
 	beforeEach(() => {
 		localStorageService = {
@@ -18,7 +19,12 @@ describe('app::plants PlantsService', () => {
 	describe('create plant', () => {
 		beforeEach(() => {
 			plant = {};
+			spyOn(sut, 'assignId');
 			sut.createPlant(plant);
+		});
+
+		it('should assign id to newly created plant', () => {
+			expect(sut.assignId).toHaveBeenCalledWith(plant);
 		});
 
 		it('should get current list of existing plants', () => {
@@ -40,6 +46,32 @@ describe('app::plants PlantsService', () => {
 
 		it('should load all plants', () => {
 			expect(sut.getAllPlants()).toEqual(plants);
+		});
+	});
+
+	describe('assign id', () => {
+		beforeEach(() => {
+			plant = {};
+		});
+
+		it('should assign id to plant', () => {
+			expect(sut.assignId(plant)).toEqual(jasmine.objectContaining({
+				id: jasmine.any(Number)
+			}));
+		});
+	});
+
+	describe('get plant by id', () => {
+		beforeEach(() => {
+			plant = {
+				id: Math.random()
+			};
+			plants = [plant]
+			localStorageService.get.and.returnValue(plants);
+		});
+
+		it('should find plant in local storage', () => {
+			expect(sut.getPlantById(plant.id)).toEqual(plant);
 		});
 	});
 

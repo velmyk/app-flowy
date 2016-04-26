@@ -1,14 +1,10 @@
 export default class PlantsModifyController {
-	constructor($cordovaDialogs,
-				$cordovaVibration,
-				$timeout,
+	constructor($state,
 				$cordovaLocalNotification) {
 		'ngInject';
 
-		this.$cordovaDialogs = $cordovaDialogs;
-		this.$cordovaVibration = $cordovaVibration;
-		this.$timeout = $timeout;
 		this.$cordovaLocalNotification = $cordovaLocalNotification;
+		this.plant = $state.params.plant;
 	}
 
 	notify() {

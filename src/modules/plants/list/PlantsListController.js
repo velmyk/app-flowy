@@ -1,9 +1,13 @@
 export default class PlantsListController {
-	constructor(plants) {
+	constructor($state,
+				plants) {
 		'ngInject';
 
+		this.$state = $state;
 		this.plants = plants;
 	}
 
-	
+	modifyPlant(plantId) {
+		this.$state.go('^.modify', { plantId: plantId} );
+	}
 }

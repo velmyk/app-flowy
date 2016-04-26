@@ -2,7 +2,7 @@
     <md-content>
       <md-list flex>
         <md-subheader class="md-no-sticky">My plaants</md-subheader>
-        <md-list-item class="md-3-line" ng-repeat="plant in plantsListCtrl.plants" ng-click="null">
+        <md-list-item class="md-3-line" ng-repeat="plant in plantsListCtrl.plants" ng-click="plantsListCtrl.modifyPlant(plant.id)">
           <img ng-src="{{plant.face}}?{{$index}}" class="md-avatar" alt="{{plant.name}}" />
           <div class="md-list-item-text" layout="column">
             <h3>{{ plant.name }}</h3>

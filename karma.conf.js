@@ -39,6 +39,10 @@ module.exports = function (config) {
                         test: /\.js$/,
                         loader: 'isparta',
                         exclude: /node_modules|\.spec.js$/
+                    },
+                    {
+                        test: /\.html$/,
+                        loader: 'raw'
                     }
                 ]
             }
