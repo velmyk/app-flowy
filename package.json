@@ -56,6 +56,7 @@
     "karma-phantomjs-launcher": "1.0.0",
     "karma-webpack": "1.7.0",
     "ng-annotate-loader": "0.1.0",
+    "ng-cordova": "0.1.26-alpha",
     "node-sass": "3.4.2",
     "npm-run-all": "1.5.1",
     "onchange": "2.2.0",

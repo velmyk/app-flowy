@@ -4,4 +4,6 @@ export default class PlantsListController {
 
 		this.plants = plants;
 	}
+
+	
 }
