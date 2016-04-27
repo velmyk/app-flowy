@@ -2,7 +2,9 @@ import PlantsListController from './PlantsListController';
 
 describe('app::plants PlantsListController', () => {
 	let sut,
-		$state;
+		$state,
+		PlantsService,
+		$event;
 
 	let plantId,
 		plant;
@@ -13,7 +15,16 @@ describe('app::plants PlantsListController', () => {
 			go: jasmine.createSpy('go')
 		};
 
-		sut = new PlantsListController($state);
+		$event = {
+			stopPropagation: jasmine.createSpy('stopPropagation')
+		};
+
+		PlantsService = {
+			deletePlant: jasmine.createSpy('deletePlant')
+		};
+
+		sut = new PlantsListController($state,
+									   PlantsService);
 	});
 
 	describe('modify plant', () => {
@@ -57,6 +68,21 @@ describe('app::plants PlantsListController', () => {
 
 		it('should show delete button on target item', () => {
 			expect(sut.forDelete).toEqual(null);
+		});
+	});
+
+	describe('delete plant', () => {
+		beforeEach(() => {
+			plant = RandomString();
+			sut.deletePlant(plant, $event);
+		});
+
+		it('should remove plant', () => {
+			expect(PlantsService.deletePlant).toHaveBeenCalledWith(plant);
+		});
+
+		it('should prevent opening plant', () => {
+			expect($event.stopPropagation).toHaveBeenCalled();
 		});
 	});
 });

@@ -3,7 +3,6 @@ import TIME_CONSTANTS from './TIME_CONSTANTS';
 export default class PlantsService {
 	constructor(localStorageService,
 				$cordovaLocalNotification) {
-
 		'ngInject';
 
 		this.localStorageService = localStorageService;
@@ -44,6 +43,19 @@ export default class PlantsService {
 
 	calculateNotificationTime(interval) {
 		return new Date(new Date().getTime() + interval * TIME_CONSTANTS.MILISECONDS_IN_SECOND).getTime();
+	}
+
+	deletePlant(plant) {
+		let indexToDelete,
+			plantsList = this.localStorageService.get('plants');
+
+		plantsList.forEach((item, index) => {
+			if(item.id === plant.id) {
+				indexToDelete = index;
+			}
+		});
+		plantsList.splice(indexToDelete, 1);
+		this.localStorageService.set('plants', plantsList);
 	}
 
 }

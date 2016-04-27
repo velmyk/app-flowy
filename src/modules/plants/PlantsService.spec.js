@@ -115,4 +115,26 @@ describe('app::plants PlantsService', () => {
 		});
 	});
 
+	describe('delete plant', () => {
+		let plantsAfterDeleting;
+
+		beforeEach(() => {
+			plant = {
+				id: Math.random()
+			};
+			plants = [{id: 1}, {id: 2}, plant, {id: 3}];
+			plantsAfterDeleting = [{id: 1}, {id: 2}, {id: 3}];;
+			localStorageService.get.and.returnValue(plants);
+			sut.deletePlant(plant);
+		});
+
+		it('should get current list of existing plants', () => {
+			expect(localStorageService.get).toHaveBeenCalledWith('plants');
+		});
+
+		it('should store other plants after deleting', () => {
+			expect(localStorageService.set).toHaveBeenCalledWith('plants', plantsAfterDeleting);
+		});
+	});
+
 });
