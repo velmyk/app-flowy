@@ -29,7 +29,6 @@ export default class PlantsService {
 	}
 
 	assignNotification(plant) {
-		console.log(plant);
 		return this.$cordovaLocalNotification.schedule({
 			id: plant.id,
 			title: plant.name,

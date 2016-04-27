@@ -1,0 +1,8 @@
+i {
+	&.icon {
+		&-leaf {
+			@include sprite($icon-leaf);
+			margin-right: 10px;
+		}
+	}
+}

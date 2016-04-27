@@ -17,8 +17,9 @@
     "build:css": "node-sass --output-style compressed ./src/scss/core.scss ./cordova/www/app.css",
     "watch:css": "onchange 'src/**/*.scss' -- npm run build:css",
     "watch:js": "webpack-dev-server --inline --hot",
+    "sprites": "sprity create ./cordova/www src/images/icons/*.png -c ./ -s ../../src/scss/sprite.scss -p sass --style-type scss",
     "start": "npm run build && npm-run-all --parallel watch:css watch:js",
-    "build": "npm-run-all clean build:js uglify static build:css autoprefixer",
+    "build": "npm-run-all clean build:js uglify static sprites build:css autoprefixer",
     "device": "npm run build && cd cordova && cordova prepare && cordova run ios --device"
   },
   "keywords": [
@@ -65,6 +66,9 @@
     "postcss-cli": "2.5.1",
     "raw-loader": "0.5.1",
     "rimraf": "2.5.2",
+    "sprity": "1.0.8",
+    "sprity-cli": "1.0.1",
+    "sprity-sass": "1.0.4",
     "uglify-js": "2.6.2",
     "webpack": "1.12.13",
     "webpack-dev-server": "1.14.1"
