@@ -30,5 +30,6 @@ export default class PlantsListController {
 	deletePlant(plant,  $event) {
 		$event.stopPropagation();
 		this.PlantsService.deletePlant(plant);
+		this.$state.go('.', null, { reload: true });
 	}
 }

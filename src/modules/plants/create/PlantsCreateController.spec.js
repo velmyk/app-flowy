@@ -2,14 +2,20 @@ import PlantsCreateController from './PlantsCreateController';
 
 describe('app::plants PlantsCreateController', () => {
 	let sut,
-		PlantsService;
+		PlantsService,
+		$state;
 
 	beforeEach(() => {
 		PlantsService = {
 			createPlant: jasmine.createSpy('createPlant')
 		};
 
-		sut = new PlantsCreateController(PlantsService);
+		$state = {
+			go: jasmine.createSpy('go')
+		};
+
+		sut = new PlantsCreateController(PlantsService,
+										$state);
 	});
 
 	describe('create plant', () => {
@@ -20,6 +26,10 @@ describe('app::plants PlantsCreateController', () => {
 
 		it('should create plant', () => {
 			expect(PlantsService.createPlant).toHaveBeenCalledWith(sut.input);
+		});
+
+		it('should go to plants list after creating new plant', () => {
+			expect($state.go).toHaveBeenCalledWith('^.list');
 		});
 	});
 });

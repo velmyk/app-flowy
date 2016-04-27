@@ -84,5 +84,9 @@ describe('app::plants PlantsListController', () => {
 		it('should prevent opening plant', () => {
 			expect($event.stopPropagation).toHaveBeenCalled();
 		});
+
+		it('should reload list of plants', () => {
+			expect($state.go).toHaveBeenCalledWith('.', null, {reload: true});
+		});
 	});
 });

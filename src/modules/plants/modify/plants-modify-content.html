@@ -1,6 +1,41 @@
-<div>Modify</div>
-Plant: {{plantsModifyCtrl.plant}}
-<md-button
-	type="submit"
-	class="md-raised md-primary"
-	ng-click="plantsModifyCtrl.notify()">Save</md-button>
+<div layout-gt-sm="row"
+	class="plants-create-layout">
+	<form name="userForm"
+		ng-submit="plantsModifyCtrl.modifyPlant()">
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Name</label>
+			<input 
+				required
+				ng-model="plantsModifyCtrl.plant.name">
+		</md-input-container>
+		<div layout="row" layout-sm="column">
+			<div flex="30">
+				<md-input-container
+					class="md-block"
+					flex-gt-sm>
+					<label>Interval</label>
+					<input 
+						type="number" 
+						min="1"
+						max="1000"
+						step="1"
+						required
+						ng-model="plantsModifyCtrl.plant.interval">
+				</md-input-container>
+			</div>
+			<div flex="10"></div>
+			<div flex="50"
+				class="plants-create-slider">
+				<md-slider
+					class="md-primary"
+					step="1"
+					min="1"
+					max="60"
+					aria-label="interval"
+					ng-model="plantsModifyCtrl.plant.interval">
+				</md-slider>
+			</div>
+		</div>		
+		<md-button type="submit" class="md-raised md-primary">Create</md-button>
+	</form>
+</div>

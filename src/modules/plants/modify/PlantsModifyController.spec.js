@@ -2,7 +2,8 @@ import PlantsModifyController from './PlantsModifyController';
 
 describe('app::plants PlantsModifyController', () => {
 	let sut,
-		$state;
+		$state,
+		$cordovaLocalNotification;
 
 	let plant;
 
@@ -10,28 +11,20 @@ describe('app::plants PlantsModifyController', () => {
 		plant = {};
 
 		$state = {
-			// go: jasmine.createSpy('go')
-			params: {
-				plant: plant
-			}
+			go: jasmine.createSpy('go')
 		};
 
+		$cordovaLocalNotification = {
 
-		sut = new PlantsModifyController($state);
+		};
+
+		sut = new PlantsModifyController($state,
+										$cordovaLocalNotification,
+										plant);
 	});
 
 	it('should resolve plant information', () => {
 		expect(sut.plant).toEqual(plant);
 	});
 
-// 	describe('modify plant', () => {
-// 		beforeEach(() => {
-// 			plant = {};
-// 			sut.modifyPlant(plant);
-// 		});
-
-// 		it('should create plant', () => {
-// 			expect($state.go).toHaveBeenCalledWith('^.modify', { plant: plant } );
-// 		});
-// 	});
 });

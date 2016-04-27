@@ -2,7 +2,7 @@
     <md-content>
         <md-list flex>
             <md-subheader
-                class="md-no-sticky">My plaants</md-subheader>
+                class="md-no-sticky">My plants</md-subheader>
             <md-list-item
                 class="md-3-line"
                 ng-repeat="plant in plantsListCtrl.plants"
@@ -14,8 +14,8 @@
                 <div class="md-list-item-text"
                     layout="column">
                     <h3>{{ plant.name }}</h3>
-                    <h4>{{ plant.iterval }}</h4>
-                    <p>{{ plant.next }}</p>
+                    <h4>Next water: {{ (plant.next | date:'yyyy-MM-dd HH:mm:ss')  || 'unknown'}}</h4>
+                    <p>Interval: {{ plant.interval || 'unknown'}} s</p>
                 </div>
                 <div class="plants-list-delete"
                     ng-show="plantsListCtrl.forDelete == plant"
