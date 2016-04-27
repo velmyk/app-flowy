@@ -15,8 +15,8 @@ export default {
     }
 };
 
-function getAllPlants(PlantsService) {
+function getAllPlants(PlantsResource) {
 	'ngInject';
 
-	return PlantsService.getAllPlants();
+	return PlantsResource.getAllPlants();
 }

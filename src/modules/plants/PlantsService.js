@@ -1,25 +1,18 @@
 import TIME_CONSTANTS from './TIME_CONSTANTS';
 
 export default class PlantsService {
-	constructor(localStorageService,
-				$cordovaLocalNotification) {
+	constructor(PlantsResource,
+				NotificationService) {
 		'ngInject';
 
-		this.localStorageService = localStorageService;
-		this.$cordovaLocalNotification = $cordovaLocalNotification;
+		this.PlantsResource = PlantsResource;
+		this.NotificationService = NotificationService;
 	}
 
 	createPlant(newPlant) {
-		let plantsList = this.localStorageService.get('plants');
 		newPlant = this.assignId(newPlant);
-		plantsList = plantsList ? plantsList : [];
-		this.assignNotification(newPlant);
-		plantsList.push(newPlant);
-		this.localStorageService.set('plants', plantsList);
-	}
-
-	getAllPlants() {
-		return this.localStorageService.get('plants');
+		this.NotificationService.assignNotification(newPlant);
+		this.PlantsResource.savePlant(newPlant);
 	}
 
 	assignId(plant) {
@@ -27,35 +20,8 @@ export default class PlantsService {
 		return plant;
 	}
 
-	assignNotification(plant) {
-		return this.$cordovaLocalNotification.schedule({
-			id: plant.id,
-			title: plant.name,
-			text: 'Need a water!',
-			at: this.calculateNotificationTime(plant.interval)
-		});
-	}
-
-	getPlantById(plantId) {
-		let allPlants = this.localStorageService.get('plants');
-		return allPlants.find(plant => plant.id === plantId);
-	}
-
-	calculateNotificationTime(interval) {
-		return new Date(new Date().getTime() + interval * TIME_CONSTANTS.MILISECONDS_IN_SECOND).getTime();
-	}
-
 	deletePlant(plant) {
-		let indexToDelete,
-			plantsList = this.localStorageService.get('plants');
-
-		plantsList.forEach((item, index) => {
-			if(item.id === plant.id) {
-				indexToDelete = index;
-			}
-		});
-		plantsList.splice(indexToDelete, 1);
-		this.localStorageService.set('plants', plantsList);
+		this.PlantsResource.deletePlant(plant);
 	}
 
 }

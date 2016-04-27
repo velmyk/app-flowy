@@ -18,9 +18,9 @@ export default {
     }
 };
 
-function getPlant(PlantsService,
+function getPlant(PlantsResource,
                   $stateParams) {
     'ngInject';
 
-    return PlantsService.getPlantById($stateParams.plantId);
+    return PlantsResource.getPlantById($stateParams.plantId);
 };
