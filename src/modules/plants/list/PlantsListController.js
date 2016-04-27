@@ -5,6 +5,8 @@ export default class PlantsListController {
 
 		this.$state = $state;
 		this.plants = plants;
+
+		this.forDelete = null;
 	}
 
 	modifyPlant(plantId) {
@@ -13,5 +15,13 @@ export default class PlantsListController {
 
 	addNewPlant() {
 		this.$state.go('^.create');
+	}
+
+	onSwipeLeft(plant) {
+		this.forDelete = plant;
+	}
+
+	onSwipeRight(plant) {
+		this.forDelete = null;
 	}
 }

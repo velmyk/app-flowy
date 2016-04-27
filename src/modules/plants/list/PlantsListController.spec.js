@@ -4,7 +4,8 @@ describe('app::plants PlantsListController', () => {
 	let sut,
 		$state;
 
-	let plantId;
+	let plantId,
+		plant;
 
 	beforeEach(() => {
 
@@ -33,6 +34,29 @@ describe('app::plants PlantsListController', () => {
 
 		it('should go to add plant page', () => {
 			expect($state.go).toHaveBeenCalledWith('^.create');
+		});
+	});
+
+	describe('on swipe left', () => {
+		beforeEach(() => {
+			sut.forDelete = null;
+			plant = RandomString();
+			sut.onSwipeLeft(plant);
+		});
+
+		it('should show delete button on target item', () => {
+			expect(sut.forDelete).toEqual(plant);
+		});
+	});
+
+	describe('on swipe right', () => {
+		beforeEach(() => {
+			sut.forDelete = RandomString();
+			sut.onSwipeRight();
+		});
+
+		it('should show delete button on target item', () => {
+			expect(sut.forDelete).toEqual(null);
 		});
 	});
 });

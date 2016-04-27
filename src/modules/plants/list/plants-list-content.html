@@ -6,7 +6,9 @@
             <md-list-item
                 class="md-3-line"
                 ng-repeat="plant in plantsListCtrl.plants"
-                ng-click="plantsListCtrl.modifyPlant(plant.id)">
+                ng-click="plantsListCtrl.modifyPlant(plant.id)"
+                md-swipe-right="plantsListCtrl.onSwipeRight()"
+                md-swipe-left="plantsListCtrl.onSwipeLeft(plant)">
                 <i class="icon icon-leaf"
                     class="md-avatar" alt="{{plant.name}}" /></i>
                 <div class="md-list-item-text" layout="column">
@@ -14,6 +16,8 @@
                     <h4>{{ plant.iterval }}</h4>
                     <p>{{ plant.next }}</p>
                 </div>
+                <div class="plants-list-delete"
+                    ng-show="plantsListCtrl.forDelete == plant">DELETE</div>
             </md-list-item>
         </md-list>
     </md-content>

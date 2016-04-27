@@ -21,4 +21,13 @@
             padding-top: 25px;
         }
     }
+
+    &-list {
+        &-delete {
+            background-color: red;
+            padding: 10px;
+            color: white;
+            font-weight: bold;
+        }
+    }
 }
