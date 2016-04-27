@@ -17,14 +17,22 @@ describe('app::plants NotificationService', () => {
 	});
 
 	describe('assign notification', () => {
+		let notificationTime,
+			result;
+
 		beforeEach(() => {
+			notificationTime = Math.random();
 			plant = {
 				id: Math.random(),
 				name: RandomString(),
 				interval: Math.random()
 			};
-			spyOn(sut, '_calculateNotificationTime').and.returnValue(Math.random());
-			sut.assignNotification(plant);
+			spyOn(sut, '_calculateNotificationTime').and.returnValue(notificationTime);
+			result = sut.assignNotification(plant);
+		});
+
+		it('should calculate notification time', () => {
+			expect(sut._calculateNotificationTime).toHaveBeenCalledWith(plant.interval);
 		});
 
 		it('should assign timeout for notification', () => {
@@ -33,8 +41,14 @@ describe('app::plants NotificationService', () => {
 					id: plant.id,
 					title: plant.name,
 					text: 'Need a water!',
-					at: jasmine.any(Number)
+					at: notificationTime
 				}));
+		});
+
+		it('should return plant with assigned next notification time', () => {
+			expect(result).toEqual(jasmine.objectContaining({
+				nextNotification: notificationTime
+			}));
 		});
 	});
 

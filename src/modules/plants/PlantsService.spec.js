@@ -44,8 +44,6 @@ describe('app::plants PlantsService', () => {
 	});
 
 	describe('delete plant', () => {
-		let plantsAfterDeleting;
-
 		beforeEach(() => {
 			plant = {};
 

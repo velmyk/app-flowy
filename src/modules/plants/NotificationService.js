@@ -8,12 +8,17 @@ export default class PlantsService {
 	}
 
 	assignNotification(plant) {
-		return this.$cordovaLocalNotification.schedule({
+		const notificationTime = this._calculateNotificationTime(plant.interval);
+
+		plant.nextNotification = notificationTime;
+		this.$cordovaLocalNotification.schedule({
 			id: plant.id,
 			title: plant.name,
 			text: 'Need a water!',
-			at: this._calculateNotificationTime(plant.interval)
+			at: notificationTime
 		});
+
+		return plant;
 	}
 
 	_calculateNotificationTime(interval) {

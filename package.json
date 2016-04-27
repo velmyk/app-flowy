@@ -20,7 +20,8 @@
     "sprites": "sprity create ./cordova/www src/images/icons/*.png -c ./ -s ../../src/scss/sprite.scss -p sass --style-type scss",
     "start": "npm run build && npm-run-all --parallel watch:css watch:js",
     "build": "npm-run-all clean build:js uglify static sprites build:css autoprefixer",
-    "device": "npm run build && cd cordova && cordova prepare && cordova run ios --device"
+    "device": "npm run build && cd cordova && cordova prepare && cordova run ios --device",
+    "emulate": "npm run build && cd cordova && cordova prepare && cordova emulate ios"
   },
   "keywords": [
     "cordova",
