@@ -1,5 +1,3 @@
-import TIME_CONSTANTS from './TIME_CONSTANTS';
-
 export default class PlantsService {
 	constructor(PlantsResource,
 				NotificationService) {
@@ -21,7 +19,13 @@ export default class PlantsService {
 	}
 
 	deletePlant(plant) {
+		this.NotificationService.unassignNotification(plant);
 		this.PlantsResource.deletePlant(plant);
+	}
+
+	updateForNewPeriod(plant) {
+		this.NotificationService.update(plant);
+		this.PlantsResource.updatePlant(plant);
 	}
 
 }

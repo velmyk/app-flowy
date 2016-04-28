@@ -3,7 +3,7 @@ import PlantsModifyController from './PlantsModifyController';
 describe('app::plants PlantsModifyController', () => {
 	let sut,
 		$state,
-		$cordovaLocalNotification;
+		PlantService;
 
 	let plant;
 
@@ -14,12 +14,12 @@ describe('app::plants PlantsModifyController', () => {
 			go: jasmine.createSpy('go')
 		};
 
-		$cordovaLocalNotification = {
-
+		PlantService = {
+			updateForNewPeriod: jasmine.createSpy('updateForNewPeriod')
 		};
 
 		sut = new PlantsModifyController($state,
-										$cordovaLocalNotification,
+										PlantService,
 										plant);
 	});
 
@@ -43,6 +43,18 @@ describe('app::plants PlantsModifyController', () => {
 		it('should check if plant doesn\'t need water', () => {
 			sut.plant.nextNotification = now + 1;
 			expect(sut.isPlantNeedWater(plant)).toEqual(false);
+		});
+	});
+
+	describe('water plant', () => {
+		beforeEach(() => {
+			plant = RandomString();
+			sut.plant = plant;
+			sut.waterPlant();
+		});
+
+		it('should reschedule next watering', () => {
+			expect(PlantService.updateForNewPeriod).toHaveBeenCalledWith(plant);
 		});
 	});
 

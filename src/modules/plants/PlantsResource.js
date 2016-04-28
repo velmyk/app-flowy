@@ -34,4 +34,20 @@ export default class PlantsService {
 		this.localStorageService.set('plants', plantsList);
 	}
 
+	updatePlant(data) {
+		let indexToUpdate,
+			plantsList = this.getAllPlants(),
+			newPlant;
+
+		plantsList.forEach((item, index) => {
+			if(item.id === data.id) {
+				indexToUpdate = index;
+			}
+		});
+
+		plantsList[indexToUpdate] = Object.assign(plantsList[indexToUpdate], data);
+
+		this.localStorageService.set('plants', plantsList);
+	}
+
 }

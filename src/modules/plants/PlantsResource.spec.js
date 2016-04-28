@@ -81,4 +81,24 @@ describe('app::plants PlantsResource', () => {
 		});
 	});
 
+	describe('update plant', () => {
+		let newPlants;
+
+		beforeEach(() => {
+			plant = {id: 2, data: 'newData'};
+			plants = [ {id: 1, data: 'a'}, {id: 2, data: 'oldData', anotherData: 'b'}, {id: 3, data: 'c'} ];
+			newPlants = [ {id: 1, data: 'a'}, {id: 2, data: 'newData', anotherData: 'b'}, {id: 3, data: 'c'} ]
+			spyOn(sut, 'getAllPlants').and.returnValue(plants);
+			sut.updatePlant(plant);
+		});
+
+		it('should get all plants', () => {
+			expect(sut.getAllPlants).toHaveBeenCalled();
+		});
+
+		it('should save all plants with updates', () => {
+			expect(localStorageService.set).toHaveBeenCalledWith('plants', jasmine.any(Array));
+		});
+	});
+
 });

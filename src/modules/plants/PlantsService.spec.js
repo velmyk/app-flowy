@@ -12,11 +12,14 @@ describe('app::plants PlantsService', () => {
 
 		PlantsResource = {
 			savePlant: jasmine.createSpy('savePlant'),
-			deletePlant: jasmine.createSpy('deletePlant')
+			deletePlant: jasmine.createSpy('deletePlant'),
+			updatePlant: jasmine.createSpy('update')
 		};
 
 		NotificationService = {
-			assignNotification: jasmine.createSpy('assignNotification')
+			assignNotification: jasmine.createSpy('assignNotification'),
+			unassignNotification: jasmine.createSpy('unassignNotification'),
+			update: jasmine.createSpy('update')
 		};
 
 		sut = new PlantsService(PlantsResource,
@@ -39,7 +42,7 @@ describe('app::plants PlantsService', () => {
 		});
 
 		it('should store plant', () => {
-			expect(PlantsResource.savePlant).toHaveBeenCalledWith(jasmine.obje);
+			expect(PlantsResource.savePlant).toHaveBeenCalled();
 		});
 	});
 
@@ -50,8 +53,28 @@ describe('app::plants PlantsService', () => {
 			sut.deletePlant(plant);
 		});
 
+		it('should anassign all notifications from plant', () => {
+			expect(NotificationService.unassignNotification).toHaveBeenCalledWith(plant);
+		});
+
 		it('should remove selected plant', () => {
 			expect(PlantsResource.deletePlant).toHaveBeenCalledWith(plant);
+		});
+	});
+
+	describe('update for new period', () => {
+		beforeEach(() => {
+			plant = RandomString();
+			sut.updateForNewPeriod(plant);
+		});
+
+		it('should update notification', () => {
+			expect(NotificationService.update)
+				.toHaveBeenCalledWith(plant);
+		});
+
+		it('should assign new notification time to plant', () => {
+			expect(PlantsResource.updatePlant).toHaveBeenCalled();
 		});
 	});
 

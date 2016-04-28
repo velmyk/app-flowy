@@ -26,4 +26,15 @@ export default class PlantsService {
 		return new Date(new Date().getTime() + interval * TIME_CONSTANTS.MILISECONDS_IN_SECOND).getTime();
 	}
 
+	update(plant) {
+		const notificationTime = this._calculateNotificationTime(plant.interval);
+
+		plant.nextNotification = notificationTime;
+		return plant;
+	}
+
+	unassignNotification(plant) {
+		this.$cordovaLocalNotification.clear(plant.id);
+	}
+
 }

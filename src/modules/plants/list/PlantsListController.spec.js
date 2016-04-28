@@ -77,12 +77,12 @@ describe('app::plants PlantsListController', () => {
 			sut.deletePlant(plant, $event);
 		});
 
-		it('should remove plant', () => {
-			expect(PlantsService.deletePlant).toHaveBeenCalledWith(plant);
-		});
-
 		it('should prevent opening plant', () => {
 			expect($event.stopPropagation).toHaveBeenCalled();
+		});
+
+		it('should remove plant', () => {
+			expect(PlantsService.deletePlant).toHaveBeenCalledWith(plant);
 		});
 
 		it('should reload list of plants', () => {

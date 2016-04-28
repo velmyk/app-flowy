@@ -10,7 +10,8 @@ describe('app::plants NotificationService', () => {
 
 	beforeEach(() => {
 		$cordovaLocalNotification = {
-			schedule: jasmine.createSpy('schedule')
+			schedule: jasmine.createSpy('schedule'),
+			clear: jasmine.createSpy('clear')
 		};
 
 		sut = new NotificationService($cordovaLocalNotification);
@@ -56,6 +57,23 @@ describe('app::plants NotificationService', () => {
 	describe('calculate notification time', () => {
 		it('should return timestamp in the future to water plant at', () => {
 			expect(sut._calculateNotificationTime(Math.random())).toBeGreaterThan(new Date().getTime());
+		});
+	});
+
+	describe('update notification', () => {
+		
+	});
+
+	describe('unassign notification', () => {
+		beforeEach(() => {
+			plant = {
+				id: Math.random
+			};
+			sut.unassignNotification(plant);
+		});
+
+		it('should clear notification for plant', () => {
+			expect($cordovaLocalNotification.clear).toHaveBeenCalledWith(plant.id)
 		});
 	});
 
