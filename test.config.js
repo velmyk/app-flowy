@@ -1,4 +1,5 @@
 import 'core-js/es5';
+import 'core-js/es6';
 import 'angular';
 import 'angular-mocks/angular-mocks';
 
