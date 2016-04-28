@@ -32,4 +32,12 @@ export default class PlantsListController {
 		this.PlantsService.deletePlant(plant);
 		this.$state.go('.', null, { reload: true });
 	}
+
+	isPlantMarkedToBeDeleted(plant) {
+		return plant === this.forDelete;
+	}
+
+	isPlantNeedWater(plant) {
+		return plant.nextNotification < new Date();
+	}
 }

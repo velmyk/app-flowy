@@ -89,4 +89,47 @@ describe('app::plants PlantsListController', () => {
 			expect($state.go).toHaveBeenCalledWith('.', null, {reload: true});
 		});
 	});
+
+	describe('is plant for delete', () => {
+		let anotherPlant;
+
+		beforeEach(() => {
+			plant = RandomString();
+			anotherPlant = RandomString()
+			sut.forDelete = plant;
+		});
+
+		it('should check if plant marked to be deleted', () => {
+			expect(sut.isPlantMarkedToBeDeleted(plant)).toEqual(true);
+		});
+
+		it('should check if plant not marked to be deleted', () => {
+			expect(sut.isPlantMarkedToBeDeleted(anotherPlant)).toEqual(false);
+		});
+	});
+
+	describe('is plant need water', () => {
+		let now,
+			waterTime;
+
+		beforeEach(() => {
+			now = new Date().getTime();
+		});
+
+		it('should check if plant need water', () => {
+			waterTime = now - 1;
+			plant = {
+				nextNotification: waterTime
+			};
+			expect(sut.isPlantNeedWater(plant)).toEqual(true);
+		});
+
+		it('should check if plant doesn\'t need water', () => {
+			waterTime = now + 1;
+			plant = {
+				nextNotification: waterTime
+			};
+			expect(sut.isPlantNeedWater(plant)).toEqual(false);
+		});
+	});
 });

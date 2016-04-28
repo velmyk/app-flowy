@@ -14,7 +14,9 @@
                 <div class="md-list-item-text"
                     layout="column">
                     <h3>{{ plant.name }}</h3>
-                    <h4>Next water: {{ (plant.nextNotification | date:'yyyy-MM-dd HH:mm:ss')  || 'unknown'}}</h4>
+                    <h4>Next water: <span ng-class="{
+                            'plants-list-item__water-time_need-water': plantsListCtrl.isPlantNeedWater(plant)
+                        }">{{ (plant.nextNotification | date:'yyyy-MM-dd HH:mm:ss')  || 'unknown'}}</span></h4>
                     <p>Interval: {{ plant.interval || 'unknown'}} s</p>
                 </div>
                 <div class="plants-list-delete"

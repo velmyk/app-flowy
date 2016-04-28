@@ -38,4 +38,9 @@
 		</div>		
 		<md-button type="submit" class="md-raised md-primary">Save</md-button>
 	</form>
+
+	<div class="plants-modify__water-time">
+		Next water: <span ng-class="{
+			'plants-modify__water-time_need-water': plantsModifyCtrl.isPlantNeedWater(plant)
+		}">{{ (plantsModifyCtrl.plant.nextNotification | date:'yyyy-MM-dd HH:mm:ss')  || 'unknown'}}</span></div>
 </div>

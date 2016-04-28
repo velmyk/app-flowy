@@ -7,5 +7,8 @@ export default class PlantsModifyController {
 		this.plant = plant;
 	}
 
+	isPlantNeedWater() {
+		return this.plant.nextNotification < new Date();
+	}
 	
 }

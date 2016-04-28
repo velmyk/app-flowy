@@ -15,7 +15,8 @@ export default class PlantsService {
 			id: plant.id,
 			title: plant.name,
 			text: 'Need a water!',
-			at: notificationTime
+			firstAt: notificationTime,
+			every: 'minute'
 		});
 
 		return plant;
