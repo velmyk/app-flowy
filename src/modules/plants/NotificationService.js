@@ -34,7 +34,7 @@ export default class PlantsService {
 	}
 
 	unassignNotification(plant) {
-		this.$cordovaLocalNotification.clear(plant.id);
+		this.$cordovaLocalNotification.cancel(plant.id);
 	}
 
 }

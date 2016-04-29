@@ -20,6 +20,20 @@
         &-slider {
             padding-top: 25px;
         }
+
+        &-header {
+
+            height: 70px;
+
+            &__text {
+                text-align: center;
+                margin: auto;
+            }
+
+            &__arrow {
+                padding: 15px;
+            }
+        }
     }
 
     &-list {
@@ -33,18 +47,43 @@
         &-item {
             &__water-time {
                 &_need-water {
-                    color: red !important;
+                    color: #BF0909 !important;
                 }
+            }
+        }
+
+        &-header {
+
+            height: 70px;
+
+            &__text {
+                text-align: center;
+                margin: auto;
             }
         }
     }
 
     &-modify {
         &__water-time {
+            text-align: center;
             padding: 30px;
 
             &_need-water {
-                color: red;
+                color: #BF0909;
+            }
+        }
+
+        &-header {
+
+            height: 70px;
+
+            &__text {
+                text-align: center;
+                margin: auto;
+            }
+
+            &__arrow {
+                padding: 15px;
             }
         }
     }

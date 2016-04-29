@@ -14,7 +14,7 @@ export default class PlantsService {
 	}
 
 	assignId(plant) {
-		plant.id = new Date().getTime();
+		plant.id = new Date().getTime() % 100000000;
 		return plant;
 	}
 

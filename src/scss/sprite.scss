@@ -1,4 +1,6 @@
-$icon-leaf: -0px -0px 48px 48px;
+$icon-arrow_left: -0px -0px 33px 33px;
+$icon-leaf: -0px -33px 48px 48px;
+$icon-leaf_big: -0px -81px 128px 128px;
 @mixin sprite-width($sprite) {
   width: nth($sprite, 3);
 }

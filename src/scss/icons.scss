@@ -4,5 +4,18 @@ i {
 			@include sprite($icon-leaf);
 			margin-right: 10px;
 		}
+
+		&-leaf_big {
+			margin: auto;
+			@include sprite($icon-leaf_big);
+		}
+
+		&-arrow {
+			&_left {
+				@include sprite($icon-arrow_left);
+			}
+		}
+
+
 	}
 }

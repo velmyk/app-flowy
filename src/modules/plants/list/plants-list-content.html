@@ -1,8 +1,6 @@
 <div ng-cloak layout-gt-sm="row" layout="column">
     <md-content>
         <md-list flex>
-            <md-subheader
-                class="md-no-sticky">My plants</md-subheader>
             <md-list-item
                 class="md-3-line"
                 ng-repeat="plant in plantsListCtrl.plants"
@@ -14,9 +12,9 @@
                 <div class="md-list-item-text"
                     layout="column">
                     <h3>{{ plant.name }}</h3>
-                    <h4>Next water: <span ng-class="{
+                    <p>Next water: <span ng-class="{
                             'plants-list-item__water-time_need-water': plantsListCtrl.isPlantNeedWater(plant)
-                        }">{{ (plant.nextNotification | date:'yyyy-MM-dd HH:mm:ss')  || 'unknown'}}</span></h4>
+                        }">{{ (plant.nextNotification | date:'MMM d, yyyy')  || 'unknown'}}</span></p>
                     <p>Interval: {{ plant.interval || 'unknown'}} s</p>
                 </div>
                 <div class="plants-list-delete"

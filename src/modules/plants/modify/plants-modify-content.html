@@ -1,5 +1,6 @@
 <div layout-gt-sm="row"
 	class="plants-create-layout">
+	<i class="icon icon-leaf_big"></i>
 	<form name="userForm"
 		ng-submit="plantsModifyCtrl.modifyPlant()">
 		<md-input-container class="md-block" flex-gt-sm>
@@ -35,15 +36,24 @@
 					ng-model="plantsModifyCtrl.plant.interval">
 				</md-slider>
 			</div>
-		</div>		
-		<md-button type="submit" class="md-raised md-primary">Save</md-button>
+		</div>
+		<div layout="row" layout-align="center center">
+			<md-button
+				flex="50"
+				type="submit"
+				class="md-raised">Save Changes</md-button>
+
+			<md-button
+				class="md-raised"
+				flex="50"
+				ng-click="plantsModifyCtrl.waterPlant()">Water plant</md-button>
+		</div>
+		
 	</form>
 
 	<div class="plants-modify__water-time">
 		Next water: <span ng-class="{
 			'plants-modify__water-time_need-water': plantsModifyCtrl.isPlantNeedWater(plant)
-		}">{{ (plantsModifyCtrl.plant.nextNotification | date:'yyyy-MM-dd HH:mm:ss')  || 'unknown'}}</span></div>
-	<md-button
-		class="md-raised md-primary"
-		ng-click="plantsModifyCtrl.waterPlant()">Water plant</md-button>
+		}">{{ (plantsModifyCtrl.plant.nextNotification | date:'MMM dd, yyyy')  || 'unknown'}}</span></div>
+	
 </div>

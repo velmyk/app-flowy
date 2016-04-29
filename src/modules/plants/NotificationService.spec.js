@@ -11,7 +11,7 @@ describe('app::plants NotificationService', () => {
 	beforeEach(() => {
 		$cordovaLocalNotification = {
 			schedule: jasmine.createSpy('schedule'),
-			clear: jasmine.createSpy('clear')
+			cancel: jasmine.createSpy('cancel')
 		};
 
 		sut = new NotificationService($cordovaLocalNotification);
@@ -73,7 +73,7 @@ describe('app::plants NotificationService', () => {
 		});
 
 		it('should clear notification for plant', () => {
-			expect($cordovaLocalNotification.clear).toHaveBeenCalledWith(plant.id)
+			expect($cordovaLocalNotification.cancel).toHaveBeenCalledWith(plant.id)
 		});
 	});
 
