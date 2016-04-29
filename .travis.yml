@@ -10,3 +10,6 @@ script:
     - npm run lint
 after_success:
     - npm run test:coveralls
+cache:
+  directories:
+    - node_modules
