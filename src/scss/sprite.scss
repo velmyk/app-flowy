@@ -1,32 +1,77 @@
-$icon-arrow_left: -0px -0px 33px 33px;
-$icon-leaf: -0px -33px 48px 48px;
-$icon-leaf_big: -0px -81px 128px 128px;
-@mixin sprite-width($sprite) {
-  width: nth($sprite, 3);
-}
-@mixin sprite-height($sprite) {
-  height: nth($sprite, 4);
-}
-@function sprite-width($sprite) {
-   @return nth($sprite, 3);
-}
-@function sprite-height($sprite) {
-   @return nth($sprite, 4);
-}
-@mixin sprite-position($sprite) {
-  $sprite-offset-x: nth($sprite, 1);
-  $sprite-offset-y: nth($sprite, 2);
-  background-position: $sprite-offset-x $sprite-offset-y;
-}
-@mixin sprite($sprite, $display: block) {
-   @include sprite-position($sprite);
-  background-repeat: no-repeat;
-  overflow: hidden;
-  display: $display;
-  @include sprite-width($sprite);
-  @include sprite-height($sprite);
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
 }
 
-.icon {
-  background-image: url('sprite.png');
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+*/
+$icon-arrow_left-x: 0px;
+$icon-arrow_left-y: 0px;
+$icon-arrow_left-offset-x: 0px;
+$icon-arrow_left-offset-y: 0px;
+$icon-arrow_left-width: 25px;
+$icon-arrow_left-height: 25px;
+$icon-arrow_left-total-width: 120px;
+$icon-arrow_left-total-height: 189px;
+$icon-arrow_left-image: '/sprite.png';
+$icon-arrow_left: 0px 0px 0px 0px 25px 25px 120px 189px '/sprite.png';
+$icon-leaf-x: 0px;
+$icon-leaf-y: 149px;
+$icon-leaf-offset-x: 0px;
+$icon-leaf-offset-y: -149px;
+$icon-leaf-width: 40px;
+$icon-leaf-height: 40px;
+$icon-leaf-total-width: 120px;
+$icon-leaf-total-height: 189px;
+$icon-leaf-image: '/sprite.png';
+$icon-leaf: 0px 149px 0px -149px 40px 40px 120px 189px '/sprite.png';
+$icon-leaf_big-x: 0px;
+$icon-leaf_big-y: 27px;
+$icon-leaf_big-offset-x: 0px;
+$icon-leaf_big-offset-y: -27px;
+$icon-leaf_big-width: 120px;
+$icon-leaf_big-height: 120px;
+$icon-leaf_big-total-width: 120px;
+$icon-leaf_big-total-height: 189px;
+$icon-leaf_big-image: '/sprite.png';
+$icon-leaf_big: 0px 27px 0px -27px 120px 120px 120px 189px '/sprite.png';
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+*/
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
 }
