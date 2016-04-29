@@ -1,11 +1,13 @@
 export default class PlantsModifyController {
 	constructor($state,
 				PlantsService,
+				PlantsResource,
 				plant) {
 		'ngInject';
 
 		this.plant = plant;
 		this.PlantsService = PlantsService;
+		this.PlantsResource = PlantsResource;
 	}
 
 	isPlantNeedWater() {
@@ -14,6 +16,10 @@ export default class PlantsModifyController {
 
 	waterPlant() {
 		this.PlantsService.updateForNewPeriod(this.plant);
+	}
+
+	updatePlantInformation() {
+		this.PlantsResource.updatePlant(this.plant);
 	}
 	
 }
