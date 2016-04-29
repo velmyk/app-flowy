@@ -42,12 +42,12 @@ describe('app::plants PlantsModifyController', () => {
 		});
 
 		it('should check if plant need water', () => {
-			sut.plant.nextNotification = now - 1;
+			sut.plant.nextNotification = now - 1000;
 			expect(sut.isPlantNeedWater(plant)).toEqual(true);
 		});
 
 		it('should check if plant doesn\'t need water', () => {
-			sut.plant.nextNotification = now + 1;
+			sut.plant.nextNotification = now + 1000;
 			expect(sut.isPlantNeedWater(plant)).toEqual(false);
 		});
 	});

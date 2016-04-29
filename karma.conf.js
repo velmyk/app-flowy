@@ -9,7 +9,7 @@ module.exports = function (config) {
         preprocessors: {
             'test.config.js': ['webpack']
         },
-        reporters: ['dots'],
+        reporters: ['dots', 'coverage'],
         coverageReporter: {
             reporters: [
                 {type: 'lcov', dir: 'coverage/', subdir: '.'},
