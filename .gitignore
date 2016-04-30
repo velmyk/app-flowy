@@ -3,4 +3,4 @@ node_modules
 coverage
 cordova/platforms
 cordova/plugins
-cordova/www
+cordova/www/*
