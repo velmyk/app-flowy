@@ -10,16 +10,7 @@
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.velmyk.team.flowy"
         },
-        "cordova-plugin-dialogs": {
-            "PACKAGE_NAME": "com.velmyk.team.flowy"
-        },
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.velmyk.team.flowy"
-        },
         "de.appplant.cordova.plugin.local-notification": {
-            "PACKAGE_NAME": "com.velmyk.team.flowy"
-        },
-        "cordova-plugin-vibration": {
             "PACKAGE_NAME": "com.velmyk.team.flowy"
         }
     },

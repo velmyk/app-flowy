@@ -9,8 +9,7 @@
     </author>
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
-    <plugin name="cordova-plugin-dialogs" spec="1" />
-    <plugin name="cordova-plugin-vibration" spec="1" />
+    <plugin name="de.appplant.cordova.plugin.local-notification" spec="https://github.com/katzer/cordova-plugin-local-notifications.git" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -24,5 +23,11 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <splash height="960" src="/res/ios/Default@2x~iphone.png" width="640" />
+        <splash height="1136" src="/res/ios/Default-568h@2x~iphone.png" width="640" />
+        <splash height="480" src="/res/ios/Default~iphone.png" width="320" />
+        <icon height="60" src="/res/ios/icon-60.png" width="60" />
+        <icon height="120" src="/res/ios/icon-60@2x.png" width="120" />
     </platform>
+    <engine name="ios" spec="~4.1.1" />
 </widget>

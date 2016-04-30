@@ -1,3 +1,6 @@
 node_modules
 .DS_Store
 coverage
+cordova/platforms
+cordova/plugins
+cordova/www

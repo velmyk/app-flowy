@@ -15,21 +15,12 @@
         <param name="ios-package" value="CDVGestureHandler" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="Notification">
-        <param name="ios-package" value="CDVNotification" />
-    </feature>
-    <feature name="Console">
-        <param name="ios-package" value="CDVLogger" />
-    </feature>
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
     </feature>
     <feature name="LocalNotification">
         <param name="ios-package" onload="true" value="APPLocalNotification" />
         <param name="onload" value="true" />
-    </feature>
-    <feature name="Vibration">
-        <param name="ios-package" value="CDVVibration" />
     </feature>
     <name>flowy</name>
     <description>
@@ -48,6 +39,11 @@
     <allow-intent href="geo:*" />
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
+    <splash height="960" src="/res/ios/Default@2x~iphone.png" width="640" />
+    <splash height="1136" src="/res/ios/Default-568h@2x~iphone.png" width="640" />
+    <splash height="480" src="/res/ios/Default~iphone.png" width="320" />
+    <icon height="60" src="/res/ios/icon-60.png" width="60" />
+    <icon height="120" src="/res/ios/icon-60@2x.png" width="120" />
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="BackupWebStorage" value="cloud" />
     <preference name="DisallowOverscroll" value="false" />

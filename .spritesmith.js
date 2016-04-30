@@ -6,7 +6,7 @@ module.exports = {
   src: './src/images/icons/*.{png,gif,jpg}',
   destImage: './cordova/www/sprite.png',
   destCSS: './src/scss/sprite.scss',
-  imgPath: '/sprite.png',
+  imgPath: 'sprite.png',
   padding: 2,
   algorithm: 'top-down',
   algorithmOpts: { sort: false },
