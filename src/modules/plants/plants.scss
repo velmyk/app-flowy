@@ -38,10 +38,11 @@
 
     &-list {
         &-delete {
-            background-color: red;
-            padding: 26px 10px;
+            background-color: #e50d0d;
+            padding: 26px 20px 26px 10px;
             color: white;
             font-weight: bold;
+            margin-right: -25px;
         }
 
         &-item {
