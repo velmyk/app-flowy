@@ -3,7 +3,7 @@ export default class StrangeController {
 		'ngInject';
 
 		this.StrangeService = StrangeService;
-		this.senseOfLife = "";
+		this.senseOfLife = '';
 	}
 
 	showSenseOfLife() {
