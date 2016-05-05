@@ -13,4 +13,16 @@
             padding: 15px;
         }
     }
+
+    &-content {
+
+        &__button {
+            width: 95%;
+            margin-top: 50px;
+        }
+
+        &__text {
+            padding: 150px 48%;
+        }
+    }
 }

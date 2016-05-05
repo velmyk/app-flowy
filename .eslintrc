@@ -25,6 +25,7 @@
         "beforeEach": false,
         "jasmine": false,
         "spyOn": false,
-        "RandomString": false
+        "RandomString": false,
+        "inject": false
     }
 }
