@@ -1,4 +1,4 @@
 export default {
-    url: '/plants',
+    url: 'plants',
     abstract: true
 };

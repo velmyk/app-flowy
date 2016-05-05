@@ -1,0 +1,16 @@
+.strange {
+
+    &-header {
+
+        height: 70px;
+
+        &__text {
+            text-align: center;
+            margin: auto;
+        }
+
+        &__arrow {
+            padding: 15px;
+        }
+    }
+}

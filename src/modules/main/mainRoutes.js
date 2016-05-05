@@ -7,7 +7,7 @@ export default function mainRoutes($stateProvider) {
 
     $stateProvider
         .state('main', {
-            url: '',
+            url: '/',
             abstaract: true,
             views: {
                 '': {
