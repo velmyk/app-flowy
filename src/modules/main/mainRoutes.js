@@ -1,5 +1,6 @@
 import rootTemplate from './main.html';
 import headerTemplate from './header.html';
+import contentTemplate from './content.html';
 
 export default function mainRoutes($stateProvider) {
     'ngInject';
@@ -14,6 +15,9 @@ export default function mainRoutes($stateProvider) {
                 },
                 'header@main': {
                     template: headerTemplate
+                },
+                'content@main': {
+                    template: contentTemplate
                 }
             }
         });
