@@ -6,10 +6,13 @@
 
 Reminds you to water your plants in time.
 
-Stack of technologies:
-	- AngularJS
-	- Angular Material
-	- Cordova	
+Also it can tell you sense of life.
 
+### Stack of technologies:
+ * AngularJS
+ * Angular Material
+ * Cordova
 
+### Screenshots:
 
+![Screenshots](/src/images/readme/app-screenshots.jpg)
