@@ -5,7 +5,7 @@
   "repository": "https://github.com/velmyk/flowy.git",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf cordova/www/*",
+    "clean": "rimraf cordova/www/* cordova/platforms cordova/plugins",
     "test": "karma start",
     "test:tdd": "karma start --singleRun=false",
     "test:coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",

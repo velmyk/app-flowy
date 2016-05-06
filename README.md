@@ -2,4 +2,14 @@
 [![Coverage Status](https://coveralls.io/repos/github/velmyk/flowy/badge.svg?branch=master)](https://coveralls.io/github/velmyk/flowy?branch=master)
 
 
-# Flowy app
+# Flowy App
+
+Reminds you to water your plants in time.
+
+Stack of technologies:
+	- AngularJS
+	- Angular Material
+	- Cordova	
+
+
+
